@@ -28,5 +28,7 @@ Route::apiResource('plans', PlanController::class, ['only' => 'index']);
 
 Route::apiSingleton('user', UserController::class, ['only' => 'show']);
 
-Route::apiResource('contract', ContractsController::class);
-Route::get('/contracts/active', [ContractsController::class, 'active'])->name('contracts.acitve');
+Route::group(['prefix' => 'contracts'], function() {
+    Route::get('/active', [ContractsController::class, 'active'])->name('contracts.active');
+    Route::apiResource('/', ContractsController::class);
+});
