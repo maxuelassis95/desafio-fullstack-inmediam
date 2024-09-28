@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContractsController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,6 @@ Route::get('/', function () {
 Route::apiResource('plans', PlanController::class, ['only' => 'index']);
 
 Route::apiSingleton('user', UserController::class, ['only' => 'show']);
+
+Route::apiResource('contract', ContractsController::class);
+Route::get('/contracts/active', [ContractsController::class, 'active'])->name('contracts.acitve');
