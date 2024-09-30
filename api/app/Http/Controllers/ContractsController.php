@@ -47,8 +47,11 @@ class ContractsController extends Controller
 
             $contract = Contract::create([
                 'user_id' => $user->id,
-                'plan_id' => $validatedData['plan_id']
+                'plan_id' => $validatedData['plan_id'],
+                'active' => false,
+                'note' => 'Contrato criado, aguardando pagamento',
             ]);
+            //dd($contract);
             Log::info('Contrato criado com sucesso');
 
             return response()->json([

@@ -22,7 +22,8 @@ return new class extends Migration
             $table->unsignedBigInteger('plan_id');
             $table->foreign('plan_id')->on('plans')->references('id')->onDelete('cascade');
 
-            $table->boolean('active')->default(true);
+            $table->boolean('active')->default(false);
+            $table->string('note')->default('Sem notas');
 
             $table->timestamps();
         });

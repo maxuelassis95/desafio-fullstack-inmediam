@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContractsController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -32,3 +33,5 @@ Route::group(['prefix' => 'contracts'], function() {
     Route::get('/active', [ContractsController::class, 'active'])->name('contracts.active');
     Route::apiResource('/', ContractsController::class);
 });
+
+Route::post('/payments', [PaymentsController::class, 'store'])->name('payments.store');

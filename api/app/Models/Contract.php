@@ -14,7 +14,8 @@ class Contract extends Model
     protected $fillable = [
         'user_id',
         'plan_id',
-        'active'
+        'active',
+        'note'
     ];
 
     public function payments() {

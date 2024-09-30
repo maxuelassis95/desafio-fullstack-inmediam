@@ -11,7 +11,12 @@ class Payment extends Model
 
     protected $table = 'payments';
 
-    protected $fillable = ['contract_id', 'amount', 'payment_date'];
+    protected $fillable = [
+        'contract_id', 
+        'amount',
+        'status', 
+        'payment_method'
+    ];
 
     public function contract() {
         return $this->belongsTo(Contract::class);

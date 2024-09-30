@@ -20,7 +20,8 @@ return new class extends Migration
             $table->foreign('contract_id')->on('contracts')->references('id')->onDelete('cascade');
 
             $table->decimal('amount', 10,2);
-            $table->date('payment_date');
+            $table->string('payment_method');
+            $table->string('status');
 
             $table->timestamps();
         });
