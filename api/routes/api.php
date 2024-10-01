@@ -31,7 +31,9 @@ Route::apiSingleton('user', UserController::class, ['only' => 'show']);
 
 Route::group(['prefix' => 'contracts'], function() {
     Route::get('/active', [ContractsController::class, 'active'])->name('contracts.active');
+    Route::patch('/change-plan/{id}', [ContractsController::class, 'update'])->name('contracts-change');
     Route::apiResource('/', ContractsController::class);
 });
 
 Route::post('/payments', [PaymentsController::class, 'store'])->name('payments.store');
+// Cria um Middlaware que não deixe usuario que possui contrato ativo, acessar a rota de contratar plano

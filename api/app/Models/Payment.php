@@ -14,7 +14,7 @@ class Payment extends Model
     protected $fillable = [
         'contract_id', 
         'amount',
-        'status', 
+        'status',
         'payment_method'
     ];
 

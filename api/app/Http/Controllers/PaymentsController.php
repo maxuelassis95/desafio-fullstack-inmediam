@@ -12,6 +12,9 @@ class PaymentsController extends Controller
     
     public function store(Request $request) {
 
+        // Simula buscando usuario autenticado
+        $user = getUser();
+
         try {
             Log::info('Validando dados de pagamento');
             $validatedData = $request->validate([
@@ -22,12 +25,24 @@ class PaymentsController extends Controller
             // Busca dados relacioado com plano escolhido pelo usuario (Eager Loading)
             $contract = Contract::with('plan')->findOrFail($validatedData['contract_id']);
             
-            if($contract->active != true) {
+            if(!$contract->active) {
 
-            // Guarda o valor do plano escolhido
-            $planPrice = $contract->plan->price;
+            // Preço real do plano
+            $planPrice = $contract->plan->price; 
+            Log::info('Preço do plano: ' . $planPrice);
 
-            //Verifica se o plano ainda está como pendente
+            // Se o usuario possui crédito disponível, ele é aplicado
+            $finalAmount = $planPrice - $user->credit;
+            Log::info('Contract credit: ' . $user->credit);
+            Log::info('Preço final: ' . $finalAmount);
+
+            // Como o crédito foi usado, ele é zerado
+            if ($user->credit > 0) {
+                $user->update([
+                    'credit' => 0,
+                ]);
+            }
+
             $paymentExisting = Payment::where('contract_id', $validatedData['contract_id'])
                                 ->where('status', 'confirmed')
                                 ->first();
@@ -40,7 +55,7 @@ class PaymentsController extends Controller
 
             $payment = Payment::create([
                 'contract_id' => $validatedData['contract_id'],
-                'amount' => $planPrice,
+                'amount' => $finalAmount,
                 'payment_method' => $validatedData['payment_method'],
                 'status' => 'confirmed'
 

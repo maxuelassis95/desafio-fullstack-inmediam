@@ -10,7 +10,7 @@ class User extends Model
 
     protected $table = 'users';
 
-    protected $fillable = ['name', 'email'];
+    protected $fillable = ['name', 'email', 'credit'];
 
     public function contracts() {
         return $this->hasMany(Contract::class);

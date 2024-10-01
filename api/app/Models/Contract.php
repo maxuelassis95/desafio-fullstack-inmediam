@@ -15,7 +15,7 @@ class Contract extends Model
         'user_id',
         'plan_id',
         'active',
-        'note'
+        'note',
     ];
 
     public function payments() {
