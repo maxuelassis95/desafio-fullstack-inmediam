@@ -1,15 +1,15 @@
 import React from 'react';
-import usePlans from '../hooks/usePlans';
 import { useNavigate } from 'react-router-dom';
+import usePlans from '../hooks/usePlans';
 
-const Planos = () => {
+const Planos: React.FC = () => {
   const { plans, loading } = usePlans();
   const navigate = useNavigate();
 
-  if (loading) return <p>Carregando...</p>;
+  if (loading) return <p>Carregando planos...</p>;
 
-  const handlePlanSelection = (planId) => {
-    navigate(`/planos/${planId}`);
+  const handlePlanSelection = (planId: number) => {
+    navigate(`/confirmar-plano/${planId}`);
   };
 
   return (
