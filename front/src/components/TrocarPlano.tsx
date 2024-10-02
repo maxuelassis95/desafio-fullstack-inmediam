@@ -22,7 +22,7 @@ const TrocarPlano: React.FC = () => {
           .filter((plan) => plan.id !== activeContract?.plan_id) // Exclui o plano ativo
           .map((plan) => (
             <div key={plan.id} className="border p-4 rounded shadow-lg">
-              <h2 className="text-xl font-semibold">{plan.name}</h2>
+              <h2 className="text-xl font-semibold">{plan.description}</h2>
               <p className="mt-2">R${plan.price}</p>
               <button
                 className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"

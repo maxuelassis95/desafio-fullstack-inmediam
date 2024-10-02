@@ -18,7 +18,9 @@ const Planos: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {plans.map((plan) => (
           <div key={plan.id} className="border p-4 rounded shadow-lg">
-            <h2 className="text-xl font-semibold">{plan.name}</h2>
+            <h2 className="text-xl font-semibold">{plan.description}</h2>
+            <p className="mt-4">Até {plan.numberOfClients} clientes</p>
+            <p className="mt-4">Podendo usar até {plan.gigabytesStorage} GIGAS</p>
             <p className="mt-2">R${plan.price}</p>
             <button
               className="mt-4 bg-blue-500 text-white py-2 px-4 rounded"

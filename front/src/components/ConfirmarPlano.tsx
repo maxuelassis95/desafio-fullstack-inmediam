@@ -23,7 +23,7 @@ const ConfirmarPlano: React.FC = () => {
     <div className="container mx-auto mt-8">
       <h1 className="text-3xl font-bold mb-4">Confirmar Plano</h1>
       <div className="border p-4 rounded shadow-lg">
-        <h2 className="text-xl font-semibold">{selectedPlan.name}</h2>
+        <h2 className="text-xl font-semibold">{selectedPlan.description}</h2>
         <p className="mt-2">R${selectedPlan.price}</p>
         <button
           className="mt-4 bg-green-500 text-white py-2 px-4 rounded"

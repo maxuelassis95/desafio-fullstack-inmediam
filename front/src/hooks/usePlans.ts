@@ -3,7 +3,9 @@ import { getPlans } from '../services/api';
 
 interface Plan {
   id: number;
-  name: string;
+  description: string;
+  numberOfClients: number;
+  gigabytesStorage: number;
   price: number;
 }
 
