@@ -57,7 +57,8 @@ class ContractsController extends Controller
             Log::info('Contrato criado com sucesso');
 
             return response()->json([
-                'message' => 'Contrato criado com sucesso'
+                'message' => 'Contrato criado com sucesso',
+                'contract_id' => $contract->id,
             ], 200);
 
         } catch (\Exception $e) {
@@ -171,18 +172,17 @@ class ContractsController extends Controller
             Log::info('Debitando do dos créditos do usuario o valor do plano');
 
             return response()->json([
-                'message' => 'Plano alterado com sucesso. Como a quantidade de créditos que você tinha, era
-                maior que o valor do plano atual escolhido, esse valor foi debitado automaticamente e ainda lhe restou:                
-                ' . ($user->credit - $newContract->plan->price),
+                'message' => 'Contrato alterado com sucesso e já ativo, pagamento realizado com créditos disponiveis',
                 'new_contract' => $newContract,
+                'status' => 'success'
             ], 200);
 
         } else {
             // Redireciona para tela de pagamento, passando o id do contrato
             return response()->json([
-                'message' => 'Plano alterado com sucesso. Aguardando pagamento.',
-                'credit' => getUser()->credit,
+                'message' => 'Plano alterado com sucesso. Aguardando pagamento.',                
                 'new_contract' => $newContract,
+                'status' => 'pending_payment'
             ], 200);
         }
 
@@ -204,9 +204,9 @@ class ContractsController extends Controller
         }
 
         return response()->json([
-            'Nome: ' => User::find($active->user_id)->name,
-            'Contrato ativo: ' => $active->plan->description,
-            'Preço: ' => 'R$' . $active->plan->price,
+            'contract_id' => $active->id,
+            'user_id' => getUser()->id,
+            'plan' => $active->plan,
         ], 200);
     }
 

@@ -15,8 +15,8 @@ const ConfirmarPlano: React.FC = () => {
   if (!selectedPlan) return <p>Plano não encontrado!</p>;
 
   const handleConfirm = async () => {
-    await createContract(selectedPlan.id);
-    navigate(`/pagamento/${selectedPlan.id}`);
+    const contract = await createContract(selectedPlan.id);
+    navigate(`/pagamento/${contract.contract_id}`);
   };
 
   return (

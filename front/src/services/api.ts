@@ -31,6 +31,6 @@ export const simulatePayment = async (contractId: number) => {
 };
 
 export const changePlan = async (newPlanId: number) => {
-  const response = await api.patch('/contracts/change-plan', { new_plan_id: newPlanId });
+  const response = await api.patch('/contracts/change-plan', { plan_id: newPlanId });
   return response.data;
 };
