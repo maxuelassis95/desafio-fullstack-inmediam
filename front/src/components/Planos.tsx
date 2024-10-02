@@ -1,8 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import usePlans from '../hooks/usePlans';
+import useRedirectIfActiveContract from '../hooks/useRedirectIfActiveContract.tsx';
 
 const Planos: React.FC = () => {
+
+  // Redireciona se o usuario tem contrato ativo
+  useRedirectIfActiveContract();
+
   const { plans, loading } = usePlans();
   const navigate = useNavigate();
 
