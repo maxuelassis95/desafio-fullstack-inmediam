@@ -210,4 +210,14 @@ class ContractsController extends Controller
         ], 200);
     }
 
+    public function history(string $id) {
+
+        $contracts = Contract::where('user_id', $id)->get();
+
+        //dd($id);
+
+        return response()->json($contracts);
+
+    }
+
 }

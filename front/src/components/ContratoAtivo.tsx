@@ -5,7 +5,7 @@ const ContratoAtivo: React.FC = () => {
     const navigate = useNavigate();
 
     const handleGoBack = () => {
-        navigate('/'); // Redireciona para a página inicial ou outra página
+        navigate('/'); 
     };
 
     return (

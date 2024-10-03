@@ -34,3 +34,14 @@ export const changePlan = async (newPlanId: number) => {
   const response = await api.patch('/contracts/change-plan', { plan_id: newPlanId });
   return response.data;
 };
+
+// Simua que esta pegando um usuario autenticado
+export const getAuthUser = async () => {
+  const response = await api.get('/user');
+  return response.data;
+}
+
+export const getContractsForUser = async (userId: number) => {
+  const response = await api.get(`/contracts/history/${userId}`);
+  return response.data;
+};

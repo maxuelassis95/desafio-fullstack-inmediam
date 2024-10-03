@@ -31,7 +31,7 @@ Route::apiSingleton('user', UserController::class, ['only' => 'show']);
 
 Route::group(['prefix' => 'contracts'], function() {
     Route::get('/active', [ContractsController::class, 'active'])->name('contracts.active');
-    Route::get('/history', [ContractsController::class, 'history'])->name('contracts.history');
+    Route::get('/history/{id}', [ContractsController::class, 'history'])->name('contracts.history');
     Route::patch('/change-plan', [ContractsController::class, 'update'])->name('contracts-change');
     Route::apiResource('/', ContractsController::class);
 });
