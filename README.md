@@ -106,3 +106,57 @@ Banco de dados Postgresql em docker, pronto para ser utilizado no Desafio.
 - Seguir os padrões do Laravel sempre que possível, especialmente na criação de: Rotas, Migrations, Models, Controllers;
 - Seguir o padrão REST para as rotas da API;
 - Manter o histórico dos commits e utilizar Conventional Commits Pattern.
+
+# Detalhes sobre a resolução do desafio
+
+- Para rodar o projeto, clonar esse reposiório e seguir o mesmo passo a passo informado acima
+   
+# Rotas
+## GET
+
+### /api/user
+**Retorna o usuário "logado"**
+
+### /plans
+**Retorna todos os planos**
+
+### /contracts/active
+**Retorna o contrato ativo do usuario**
+
+### /contracts/history/{$id}
+**Retorna o histórico de contratações do usuario**
+
+## POST
+
+### /contracts
+**Cria um novo contrato**
+
+#### Exemplo de corpo da requisição (JSON)
+```json
+{
+  "plan_id": 2
+}
+```
+
+### POST /payments
+**Cria um novo pagamento**
+
+Exemplo de corpo da requisição (JSON):
+```json
+{
+    "contract_id": 3,
+    "payment_method": "PIX"
+}
+```
+
+## PATCH
+
+### POST /contracts/change-plan
+**Cria um novo pagamento**
+
+Exemplo de corpo da requisição (JSON):
+```json
+{
+    "plan_id": 3,
+}
+```
