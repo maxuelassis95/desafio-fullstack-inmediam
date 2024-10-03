@@ -111,25 +111,65 @@ Banco de dados Postgresql em docker, pronto para ser utilizado no Desafio.
 
 - Para rodar o projeto, clonar esse reposiório e seguir o mesmo passo a passo informado acima
    
-# Rotas
-## GET
+# Rotas do Projeto
 
-### /api/user
-**Retorna o usuário "logado"**
+## Rotas do Front-end
 
-### /plans
-**Retorna todos os planos**
+### GET
 
-### /contracts/active
-**Retorna o contrato ativo do usuario**
+- **`/`**
+  - **Descrição**: Página inicial que lista todos os planos disponíveis.
+  - **Componente**: `Planos`
 
-### /contracts/history/{$id}
-**Retorna o histórico de contratações do usuario**
+- **`/confirmar-plano/:planId`**
+  - **Descrição**: Página para confirmar a seleção de um plano específico.
+  - **Componente**: `ConfirmarPlano`
 
-## POST
+- **`/pagamento/:contractId`**
+  - **Descrição**: Página para realizar o pagamento de um contrato ativo.
+  - **Componente**: `Pagamento`
 
-### /contracts
-**Cria um novo contrato**
+- **`/sucesso`**
+  - **Descrição**: Página exibida após um pagamento bem-sucedido.
+  - **Componente**: `Sucesso`
+
+- **`/trocar-plano`**
+  - **Descrição**: Página para trocar de plano.
+  - **Componente**: `TrocarPlano`
+
+- **`/confirmar-troca/:planId`**
+  - **Descrição**: Página para confirmar a troca de plano.
+  - **Componente**: `ConfirmarTroca`
+
+- **`/contrato-ativo`**
+  - **Descrição**: Página que exibe informações sobre o contrato ativo do usuário.
+  - **Componente**: `ContratoAtivo`
+
+- **`/historico-contratos`**
+  - **Descrição**: Página que lista o histórico de contratos do usuário.
+  - **Componente**: `HistoricoContratos`
+
+
+## Rotas da API
+
+### GET
+
+- **`/api/user`**
+  - **Descrição**: Retorna o usuário "logado".
+
+- **`/plans`**
+  - **Descrição**: Retorna todos os planos.
+
+- **`/contracts/active`**
+  - **Descrição**: Retorna o contrato ativo do usuário.
+
+- **`/contracts/history/{$id}`**
+  - **Descrição**: Retorna o histórico de contratações do usuário.
+
+### POST
+
+- **`/contracts`**
+  - **Descrição**: Cria um novo contrato.
 
 #### Exemplo de corpo da requisição (JSON)
 ```json
@@ -138,10 +178,10 @@ Banco de dados Postgresql em docker, pronto para ser utilizado no Desafio.
 }
 ```
 
-### POST /payments
-**Cria um novo pagamento**
+- **`/payments`**
+  - **Descrição**: Cria um novo pagamento.
 
-Exemplo de corpo da requisição (JSON):
+#### Exemplo de corpo da requisição (JSON):
 ```json
 {
     "contract_id": 3,
@@ -149,12 +189,13 @@ Exemplo de corpo da requisição (JSON):
 }
 ```
 
-## PATCH
+### PATCH
 
-### POST /contracts/change-plan
-**Cria um novo pagamento**
+- **`/contract/change-plan`**
+  - **Descrição**: Cria um novo pagamento.
+  - 
 
-Exemplo de corpo da requisição (JSON):
+#### Exemplo de corpo da requisição (JSON):
 ```json
 {
     "plan_id": 3,
