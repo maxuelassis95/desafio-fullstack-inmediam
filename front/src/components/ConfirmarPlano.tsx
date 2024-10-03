@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { createContract } from '../services/api';
 import usePlans from '../hooks/usePlans';
+import Layout from './Layout';
 
 const ConfirmarPlano: React.FC = () => {
   const { planId } = useParams<{ planId: string }>();
@@ -20,6 +21,7 @@ const ConfirmarPlano: React.FC = () => {
   };
 
   return (
+    <Layout>
     <div className="container mx-auto mt-8">
       <h1 className="text-3xl font-bold mb-4">Confirmar Plano</h1>
       <div className="border p-4 rounded shadow-lg">
@@ -33,6 +35,7 @@ const ConfirmarPlano: React.FC = () => {
         </button>
       </div>
     </div>
+    </Layout>
   );
 };
 

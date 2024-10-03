@@ -2,6 +2,7 @@ import React from 'react';
 import useActiveContract from '../hooks/useActiveContract';
 import usePlans from '../hooks/usePlans';
 import { useNavigate } from 'react-router-dom';
+import Layout from './Layout';
 
 const TrocarPlano: React.FC = () => {
     const { activeContract, loading: loadingContract, error: errorContract } = useActiveContract();
@@ -20,6 +21,7 @@ const TrocarPlano: React.FC = () => {
     };
 
     return (
+        <Layout>
         <div className="container mx-auto mt-8">
             <h1 className="text-3xl font-bold mb-4">Trocar Plano</h1>
             <h2 className="text-lg mb-2">Seu plano atual: {activeContract.plan.description}</h2>
@@ -42,6 +44,7 @@ const TrocarPlano: React.FC = () => {
                 ))}
             </div>
         </div>
+        </Layout>
     );
 };
 

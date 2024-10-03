@@ -1,14 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Layout from './Layout';
 
 const ContratoAtivo: React.FC = () => {
     const navigate = useNavigate();
 
     const handleGoBack = () => {
-        navigate('/'); 
+        navigate('/historico-contratos'); 
     };
 
     return (
+        <Layout>
         <div className="container mx-auto mt-8 text-center">
             <h1 className="text-3xl font-bold mb-4">Você já possui um contrato ativo!</h1>
             <p className="text-lg mb-6">
@@ -21,6 +23,7 @@ const ContratoAtivo: React.FC = () => {
                 Voltar para a página inicial
             </button>
         </div>
+        </Layout>
     );
 };
 

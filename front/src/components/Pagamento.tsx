@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { simulatePayment } from '../services/api';
+import Layout from './Layout';
 
 const Pagamento: React.FC = () => {
   const { contractId } = useParams<{ contractId: string }>();
@@ -20,6 +21,7 @@ const Pagamento: React.FC = () => {
   };
 
   return (
+    <Layout>
     <div className="container mx-auto mt-8">
       <h2 className="text-2xl font-bold mb-4">Pagamento</h2>
       <p>Valor: R$100.00</p>
@@ -31,6 +33,7 @@ const Pagamento: React.FC = () => {
         {loading ? 'Processando...' : 'Confirmar Pagamento'}
       </button>
     </div>
+    </Layout>
   );
 };
 

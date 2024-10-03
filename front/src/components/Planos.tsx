@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import usePlans from '../hooks/usePlans';
 import useRedirectIfActiveContract from '../hooks/useRedirectIfActiveContract.tsx';
+import Layout from './Layout.tsx';
 
 const Planos: React.FC = () => {
 
@@ -18,6 +19,7 @@ const Planos: React.FC = () => {
   };
 
   return (
+    <Layout>
     <div className="container mx-auto">
       <h1 className="text-3xl font-bold mb-4">Selecione um Plano</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -37,6 +39,7 @@ const Planos: React.FC = () => {
         ))}
       </div>
     </div>
+    </Layout>
   );
 };
 

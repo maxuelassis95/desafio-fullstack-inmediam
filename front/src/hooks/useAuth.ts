@@ -1,11 +1,12 @@
 // simula que estou recuperando um usuario logado da api
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { getAuthUser } from '../services/api';
 
 interface User {
   id: number;
   name: string;
   email: string;
+  credit: number;
 }
 
 const useAuth = () => {
@@ -16,8 +17,9 @@ const useAuth = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get('/user');
-        setUser(response.data);
+        const response = await getAuthUser();
+        console.log('Dados do usuário:', response);
+        setUser(response);
       } catch (err) {
         setError('Erro');
       } finally {

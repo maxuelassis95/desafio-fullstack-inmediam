@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { changePlan } from '../services/api';
 import usePlans from '../hooks/usePlans';
 import useActiveContract from '../hooks/useActiveContract';
+import Layout from './Layout';
 
 const ConfirmarTroca: React.FC = () => {
     const { planId } = useParams<{ planId: string }>();
@@ -33,6 +34,7 @@ const ConfirmarTroca: React.FC = () => {
     };
 
     return (
+        <Layout>
         <div className="container mx-auto mt-8">
             <h1 className="text-3xl font-bold mb-4">Confirmar Troca de Plano</h1>
             <div className="border p-4 rounded shadow-lg">
@@ -50,6 +52,7 @@ const ConfirmarTroca: React.FC = () => {
                 </button>
             </div>
         </div>
+        </Layout>
     );
 };
 
